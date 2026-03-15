@@ -4,212 +4,200 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Нашата сватба</title>
-
 <style>
-  #envelope-screen{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-background:#f7f3ef;
+/* Общи стилове */
+body{
+  margin:0;
+  font-family: 'Georgia', serif;
+  background:#f7f7f7;
+  color:#333;
+  text-align:center;
+}
+
+/* --- ЕФЕКТ ПОЩЕНСКИ ПЛИК --- */
+#envelope-screen{
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f7f3ef;
 }
 
 .envelope{
-width:300px;
-height:200px;
-background:#e8dccc;
-position:relative;
-cursor:pointer;
-box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  width:300px;
+  height:200px;
+  background:#e8dccc;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
 }
 
 .flap{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100px;
-background:#d8c7b3;
-transform-origin:top;
-transition:transform 1s;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100px;
+  background:#d8c7b3;
+  transform-origin:top;
+  transition:transform 1s;
 }
 
 .letter{
-position:absolute;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-text-align:center;
-font-family:serif;
-}
-<script>
-
-function openEnvelope(){
-
-document.querySelector(".flap").style.transform="rotateX(180deg)";
-
-setTimeout(()=>{
-
-document.getElementById("envelope-screen").style.display="none";
-document.getElementById("main-site").style.display="block";
-
-},1000)
-
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
 }
 
-</script>
-body{
-<div id="envelope-screen">
-
-<div class="envelope" onclick="openEnvelope()">
-
-<div class="flap"></div>
-
-<div class="letter">
-<p>Натиснете, за да отворите поканата</p>
-</div>
-
-</div>
-
-</div>
-
-<div id="main-site" style="display:none;">
-font-family: 'Georgia', serif;
-margin:0;
-background:#f7f7f7;
-text-align:center;
-color:#333;
+/* --- ОСНОВЕН САЙТ --- */
+#main-site{
+  display:none;
 }
 
 header{
-background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
-height:90vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-color:white;
+  background:url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:white;
 }
 
 header h1{
-font-size:60px;
-margin:0;
+  font-size:60px;
+  margin:0;
 }
 
 header h2{
-font-weight:normal;
+  font-weight:normal;
 }
 
 section{
-padding:60px 20px;
+  padding:60px 20px;
 }
 
 .timeline{
-max-width:600px;
-margin:auto;
-text-align:left;
+  max-width:600px;
+  margin:auto;
+  text-align:left;
 }
 
 .event{
-margin-bottom:20px;
-padding:15px;
-background:white;
-border-radius:10px;
+  margin-bottom:20px;
+  padding:15px;
+  background:white;
+  border-radius:10px;
 }
 
 button{
-padding:12px 25px;
-border:none;
-background:#c8a97e;
-color:white;
-font-size:16px;
-border-radius:5px;
-cursor:pointer;
+  padding:12px 25px;
+  border:none;
+  background:#c8a97e;
+  color:white;
+  font-size:16px;
+  border-radius:5px;
+  cursor:pointer;
 }
 
 form{
-max-width:400px;
-margin:auto;
+  max-width:400px;
+  margin:auto;
 }
 
 input,select{
-width:100%;
-padding:10px;
-margin:10px 0;
+  width:100%;
+  padding:10px;
+  margin:10px 0;
 }
 
 footer{
-padding:20px;
-background:#eee;
+  padding:20px;
+  background:#eee;
 }
 </style>
 </head>
-
 <body>
 
+<!-- ПОЩЕНСКИ ПЛИК -->
+<div id="envelope-screen">
+  <div class="envelope" onclick="openEnvelope()">
+    <div class="flap"></div>
+    <div class="letter">
+      <p>Натиснете, за да отворите поканата</p>
+    </div>
+  </div>
+</div>
+
+<!-- ОСНОВЕН САЙТ -->
+<div id="main-site">
 <header>
-<h1>Мария & Иван</h1>
-<h2>15 Юни 2026</h2>
-<p>Очакваме ви на нашата сватба</p>
+  <h1>Виктория & Любомир</h1>
+  <h2>22 Август 2026</h2>
+  <p>Очакваме ви на нашата сватба</p>
 </header>
 
 <section>
 <h2>Кога?</h2>
-<p>15 Юни 2026 • 17:00</p>
+<p>22 Август 2026 • 17:30</p>
 </section>
 
 <section>
 <h2>Къде?</h2>
-<p>Ресторант Панорама, София</p>
-
+<p>Ресторант Корията, София</p>
 <iframe
-src="https://maps.google.com/maps?q=sofia&t=&z=13&ie=UTF8&iwloc=&output=embed"
+src="https://www.google.com/maps/dir//Koriata+Restaurant,+lane+%E2%80%9C+Okolovrasten+pat%E2%80%9D+437,+1532+Sofia/@42.6677067,23.3020677,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40aa87a808f3e659:0x7b144a9372a4fbe0!2m2!1d23.4565253!2d42.6659672?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
 width="100%" height="300"></iframe>
 </section>
 
-<section>
+section>
 <h2>Програма</h2>
-
 <div class="timeline">
-
-<div class="event">
-<strong>17:00</strong><br>
-Церемония
+  <div class="event">
+    <strong>17:00</strong><br>Церемония
+  </div>
+  <div class="event">
+    <strong>18:00</strong><br>Коктейл
+  </div>
+  <div class="event">
+    <strong>19:30</strong><br>Вечеря и празненство
+  </div>
 </div>
 
-<div class="event">
-<strong>18:00</strong><br>
-Коктейл
-</div>
-
-<div class="event">
-<strong>19:30</strong><br>
-Вечеря и празненство
-</div>
-
-</div>
-
+<!-- Текст най-отдолу на програмата -->
+<p style="margin-top:20px; font-style:italic; color:#555;">
+За вашето спокойствие има осигурен Drink n Drive
+</p>
 </section>
-
+  
 <section>
 <h2>Потвърдете присъствието си</h2>
-
 <form>
 <input type="text" placeholder="Вашето име">
-
 <select>
 <option>Ще присъствам</option>
 <option>Няма да мога</option>
 </select>
-
 <button type="submit">Изпрати</button>
 </form>
-
 </section>
 
 <footer>
-<p>С любов – Мария и Иван</p>
+<p>С любов – Виктория и Любомир</p>
 </footer>
+</div>
+
+<!-- JS за отваряне на плика -->
+<script>
+function openEnvelope(){
+  document.querySelector(".flap").style.transform="rotateX(180deg)";
+  setTimeout(()=>{
+    document.getElementById("envelope-screen").style.display="none";
+    document.getElementById("main-site").style.display="block";
+  },1000)
+}
+</script>
 
 </body>
 </html>
-</div>
