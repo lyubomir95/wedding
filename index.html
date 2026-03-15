@@ -6,7 +6,74 @@
 <title>Нашата сватба</title>
 
 <style>
+  #envelope-screen{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#f7f3ef;
+}
+
+.envelope{
+width:300px;
+height:200px;
+background:#e8dccc;
+position:relative;
+cursor:pointer;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+.flap{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100px;
+background:#d8c7b3;
+transform-origin:top;
+transition:transform 1s;
+}
+
+.letter{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+text-align:center;
+font-family:serif;
+}
+<script>
+
+function openEnvelope(){
+
+document.querySelector(".flap").style.transform="rotateX(180deg)";
+
+setTimeout(()=>{
+
+document.getElementById("envelope-screen").style.display="none";
+document.getElementById("main-site").style.display="block";
+
+},1000)
+
+}
+
+</script>
 body{
+<div id="envelope-screen">
+
+<div class="envelope" onclick="openEnvelope()">
+
+<div class="flap"></div>
+
+<div class="letter">
+<p>Натиснете, за да отворите поканата</p>
+</div>
+
+</div>
+
+</div>
+
+<div id="main-site" style="display:none;">
 font-family: 'Georgia', serif;
 margin:0;
 background:#f7f7f7;
@@ -145,3 +212,4 @@ width="100%" height="300"></iframe>
 
 </body>
 </html>
+</div>
