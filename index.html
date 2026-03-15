@@ -8,13 +8,13 @@
 /* --- ОБЩИ СТИЛОВЕ --- */
 body {
   margin: 0;
-  /* Увеличен базов шрифт с 2 пункта (от стандартни 16px на ~19px) */
   font-family: 'Georgia', serif;
-  font-size: 19px; 
+  /* Значително увеличен основен шрифт */
+  font-size: 22px; 
   background: #ffffff;
   color: #333;
   text-align: center;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* --- ПОЩЕНСКИ ПЛИК --- */
@@ -28,8 +28,8 @@ body {
 }
 
 .envelope {
-  width: 380px; /* Малко по-голям, за да побере текста */
-  height: 250px;
+  width: 400px; 
+  height: 260px;
   background: #a9a39a; 
   position: relative;
   cursor: pointer;
@@ -56,15 +56,15 @@ body {
   top: 52%; 
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   background: #d4af37;
   background-image: url('https://img.icons8.com/ios-filled/100/ffffff/tree-planting.png'); 
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.3), inset 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
   z-index: 3;
   border: 2px solid #b8860b;
   transition: opacity 0.5s;
@@ -72,11 +72,11 @@ body {
 
 .envelope-text {
   position: absolute;
-  bottom: 35px;
+  bottom: 30px;
   width: 100%;
   color: #f1f1f1;
   font-style: italic;
-  font-size: 17px; /* Увеличено */
+  font-size: 20px; /* По-голям текст на плика */
 }
 
 /* --- ОСНОВЕН САЙТ --- */
@@ -88,35 +88,38 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 header {
-  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.25)), 
+  /* Не забравяй да качиш твоята снимка като 'my-photo.jpg' */
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
               url('my-photo.jpg') center/cover no-repeat;
   height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: white;
-  text-shadow: 2px 2px 12px rgba(0,0,0,0.6);
+  text-shadow: 2px 2px 15px rgba(0,0,0,0.7);
 }
 
-header h1 { font-size: 56px; margin: 0; } /* Увеличено */
-header h2 { font-weight: normal; font-size: 26px; } /* Увеличено */
+header h1 { font-size: 60px; margin: 0; line-height: 1.1; }
+header h2 { font-weight: normal; font-size: 30px; margin-top: 15px; }
 
-section { padding: 80px 20px; max-width: 750px; margin: auto; }
-h2 { color: #8b5e3c; font-size: 32px; margin-bottom: 35px; } /* Увеличено */
+section { padding: 80px 25px; max-width: 800px; margin: auto; }
+h2 { color: #8b5e3c; font-size: 38px; margin-bottom: 40px; }
 
 /* ДРЕСКОД ЦВЕТОВЕ */
 .dresscode-colors {
   display: flex;
   justify-content: center;
-  gap: 18px;
-  margin-top: 25px;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
 }
 
 .color-circle {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  border: 2px solid #fff;
 }
 
 .c1 { background: #e3d5ca; } 
@@ -127,31 +130,35 @@ h2 { color: #8b5e3c; font-size: 32px; margin-bottom: 35px; } /* Увеличен
 
 .map-link {
   display: inline-block;
-  margin-top: 20px;
-  padding: 14px 35px;
+  margin-top: 25px;
+  padding: 18px 40px;
   background: #a9a39a;
-  color: white;
+  color: white !important;
   text-decoration: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
-  font-size: 18px; /* Увеличено */
+  font-size: 22px;
+  transition: transform 0.2s;
 }
 
+.map-link:active { transform: scale(0.95); }
+
+/* ФОРМА - RSVP */
 form { 
   background: #fdfaf7; 
-  padding: 35px; 
-  border-radius: 12px; 
-  box-shadow: 0 5px 20px rgba(0,0,0,0.06); 
+  padding: 40px 20px; 
+  border-radius: 15px; 
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
 }
 
 input, select, button { 
   width: 100%; 
-  padding: 14px; 
-  margin: 12px 0; 
-  border-radius: 6px; 
-  border: 1px solid #ddd;
+  padding: 18px; 
+  margin: 15px 0; 
+  border-radius: 8px; 
+  border: 1px solid #ccc;
   box-sizing: border-box;
-  font-size: 18px; /* Увеличено */
+  font-size: 22px; /* Голям шрифт за полетата */
   font-family: 'Georgia', serif;
 }
 
@@ -161,21 +168,31 @@ button {
   border: none; 
   cursor: pointer; 
   font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 20px;
 }
 
 .drink-drive {
   background: #f4ece4;
-  padding: 25px;
-  border-radius: 10px;
-  margin-top: 45px;
+  padding: 30px;
+  border-radius: 12px;
+  margin-top: 50px;
   display: flex;
   align-items: center;
   text-align: left;
-  font-size: 17px; /* Увеличено */
+  font-size: 20px;
+  border-left: 6px solid #8b5e3c;
 }
-.drink-drive img { width: 40px; margin-right: 20px; }
+.drink-drive img { width: 45px; margin-right: 25px; }
 
-footer { padding: 50px; background: #f7f7f7; font-size: 16px; color: #777; }
+footer { padding: 60px 20px; background: #f7f7f7; font-size: 18px; color: #666; }
+
+/* Адаптация за малки телефони */
+@media (max-width: 450px) {
+  .envelope { width: 320px; height: 210px; }
+  header h1 { font-size: 45px; }
+  h2 { font-size: 32px; }
+}
 
 </style>
 </head>
@@ -185,7 +202,7 @@ footer { padding: 50px; background: #f7f7f7; font-size: 16px; color: #777; }
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap" id="f"></div>
     <div class="wax-seal" id="s"></div>
-    <div class="envelope-text">Натиснете, за да отворите поканата</div>
+    <div class="envelope-text">Докоснете, за да отворите</div>
   </div>
 </div>
 
@@ -193,21 +210,22 @@ footer { padding: 50px; background: #f7f7f7; font-size: 16px; color: #777; }
   <header>
     <h1>Виктория & Любомир</h1>
     <h2>22.08.2026</h2>
-    <p>Очакваме ви, за да отпразнуваме любовта!</p>
+    <p>Очакваме ви с нетърпение!</p>
   </header>
 
   <section>
     <h2>Кога и Къде?</h2>
-    <p>Очакваме ви на <strong>22.08.2026 г.</strong> в <strong>17:30 ч.</strong></p>
-    <p>Ресторант "Корията", гр. София</p>
-    <a href="https://www.google.com/maps/search/?api=1&query=Ресторант+Корията+София" target="_blank" class="map-link">
-       📍 ВИЖТЕ ЛОКАЦИЯТА
+    <p>Дата: <strong>22 Август 2026 г.</strong></p>
+    <p>Начало: <strong>17:30 ч.</strong></p>
+    <p>Място: <strong>Ресторант "Корията", София</strong></p>
+    <a href="http://googleusercontent.com/maps.google.com/4" target="_blank" class="map-link">
+       📍 КЪМ КАРТАТА
     </a>
   </section>
 
   <section style="background-color: #fdfaf7;">
     <h2>Дрескод</h2>
-    <p>Ще бъдем щастливи, ако изберете тоалет в нашата цветова палитра:</p>
+    <p>Ще бъдем признателни, ако изберете облекло в нашата цветова палитра:</p>
     <div class="dresscode-colors">
       <div class="color-circle c1"></div>
       <div class="color-circle c2"></div>
@@ -220,39 +238,40 @@ footer { padding: 50px; background: #f7f7f7; font-size: 16px; color: #777; }
   <section>
     <h2>Програма</h2>
     <p><strong>17:30</strong> – Welcome Drink</p>
-    <hr style="width: 40%; border: 0.5px solid #ddd; margin: 15px auto;">
+    <hr style="width: 50%; border: 0.5px solid #ddd; margin: 20px auto;">
     <p><strong>18:00</strong> – Сватбена церемония</p>
-    <hr style="width: 40%; border: 0.5px solid #ddd; margin: 15px auto;">
+    <hr style="width: 50%; border: 0.5px solid #ddd; margin: 20px auto;">
     <p><strong>19:00</strong> – Празнична вечеря</p>
 
     <div class="drink-drive">
       <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png" alt="Car"/>
-      <span>За вашето пълно спокойствие сме подсигурили <strong>Drink & Drive</strong> услуги за цялата вечер.</span>
+      <span>За вашето удобство сме подсигурили <strong>Drink & Drive</strong> услуги през цялата вечер.</span>
     </div>
   </section>
 
   <section style="background-color: #fdfaf7;">
-    <h2>Потвърждение (RSVP)</h2>
-    <p style="margin-bottom: 25px;">Моля, потвърдете вашето присъствие до 01.07.2026 г.</p>
+    <h2>Потвърждение</h2>
+    <p style="margin-bottom: 30px;">Моля, потвърдете присъствието си до 01.07.2026 г.</p>
     <form action="https://formspree.io/f/lyubomir.kostov95@gmail.com" method="POST">
-      <input type="text" name="name" placeholder="Вашето име" required>
-      <select name="status" required>
+      <input type="text" name="Име" placeholder="Вашето име" required>
+      <select name="Присъствие" required>
         <option value="" disabled selected>Ще присъствате ли?</option>
-        <option value="Да">Да, ще присъствам с удоволствие</option>
-        <option value="Не">За съжаление, няма да мога</option>
+        <option value="Да">Да, ще присъствам</option>
+        <option value="Не">За съжаление, не</option>
       </select>
-      <input type="number" name="guests" placeholder="Брой гости" min="1">
-      <button type="submit">ИЗПРАТИ ПОТВЪРЖДЕНИЕ</button>
+      <input type="number" name="Гости" placeholder="Брой гости" min="1">
+      <button type="submit">ИЗПРАТИ RSVP</button>
     </form>
   </section>
 
   <footer>
-    <p>С много обич: Виктория и Любомир</p>
+    <p>С много любов: Виктория и Любомир</p>
   </footer>
 </div>
 
 <script>
 function openEnvelope(){
+  // Анимация на плика
   document.getElementById("f").style.transform = "rotateX(180deg)";
   document.getElementById("s").style.opacity = "0";
   
