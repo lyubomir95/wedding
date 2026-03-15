@@ -24,12 +24,18 @@ body{
 }
 
 .envelope{
-  width:300px;
-  height:200px;
-  background:#e8dccc;
+  width:400px;
+  height:250px;
+  background: linear-gradient(145deg, #f1e2d0, #e8d2bb);
   position:relative;
   cursor:pointer;
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+  box-shadow: 0 15px 25px rgba(0,0,0,0.3), 0 0 15px rgba(255,255,255,0.2) inset;
+  border-radius:10px;
+  transition: transform 0.3s ease;
+}
+
+.envelope:hover{
+  transform: scale(1.05);
 }
 
 .flap{
@@ -37,10 +43,12 @@ body{
   top:0;
   left:0;
   width:100%;
-  height:100px;
-  background:#d8c7b3;
+  height:120px;
+  background: linear-gradient(145deg, #d8c7b3, #c8b09c);
   transform-origin:top;
-  transition:transform 1s;
+  transition: transform 1s;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
 }
 
 .letter{
@@ -49,6 +57,9 @@ body{
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
+  font-weight:bold;
+  color:#8b5e3c;
+  font-size:16px;
 }
 
 /* --- ОСНОВЕН САЙТ --- */
@@ -121,6 +132,27 @@ footer{
   font-size:14px;
   color:#555;
 }
+
+/* --- Drink & Drive стил --- */
+.drink-drive{
+  display:flex;
+  align-items:flex-start;
+  max-width:600px;
+  margin:20px auto 0;
+  background:#fff3e6;
+  padding:15px 20px;
+  border-radius:10px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  font-style:italic;
+  color:#555;
+}
+
+.drink-drive img{
+  width:30px;
+  height:30px;
+  margin-right:15px;
+  margin-top:3px;
+}
 </style>
 </head>
 <body>
@@ -153,8 +185,8 @@ footer{
 <h2>Къде?</h2>
 <p>Ресторант Корията</p>
 <iframe
-src="https://www.google.com/maps/dir//Koriata+Restaurant,+lane+%E2%80%9C+Okolovrasten+pat%E2%80%9D+437,+1532+Sofia/@42.6677067,23.3020677,15z/data=!4m8!4m7!1m0!1m5!1m1!1s0x40aa87a808f3e659:0x7b144a9372a4fbe0!2m2!1d23.4565253!2d42.6659672?entry=ttu&g_ep=EgoyMDI2MDMxMS4wIKXMDSoASAFQAw%3D%3D"
-width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d16839.058475725225!2d23.437773458503393!3d42.65974417018181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40aa87a808f3e659%3A0x7b144a9372a4fbe0!2sKoriata%20Restaurant!5e0!3m2!1sen!2sbg!4v1773580254598!5m2!1sen!2sbg"
+width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </section>
 
 <section>
@@ -171,10 +203,11 @@ width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></
   </div>
 </div>
 
-<!-- Текст за Drink & Drive най-отдолу на програмата -->
-<p style="margin-top:20px; font-style:italic; color:#555;">
-За вашето пълно спокойствие и добро настроение, сме подсигурили неограничен Drink & Drive пакет. Насладете се на празника, а ние ще се погрижим вие и автомобилът ви да се приберете безопасно!
-</p>
+<!-- Drink & Drive с икона -->
+<div class="drink-drive">
+  <img src="https://img.icons8.com/ios-filled/50/000000/car.png" alt="Car Icon"/>
+  <span>За вашето пълно спокойствие и добро настроение, сме подсигурили неограничен Drink & Drive пакет. Насладете се на празника, а ние ще се погрижим вие и автомобилът ви да се приберете безопасно!</span>
+</div>
 </section>
 
 <section>
