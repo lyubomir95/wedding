@@ -163,17 +163,32 @@ button {
   font-weight: bold;
 }
 
+/* --- КОРЕКЦИЯ НА DRINK N DRIVE --- */
 .drink-drive {
-  background: #f4ece4;
-  padding: 25px;
-  border-radius: 10px;
-  margin-top: 40px;
-  display: flex;
-  align-items: center;
-  text-align: left;
-  font-size: 21px; 
+  background: #fff3e6; /* Леко по-наситен цвят за контраст */
+  padding: 30px;
+  border-radius: 15px;
+  margin: 40px auto;
+  display: block; /* Променено от flex за по-добра съвместимост */
+  max-width: 600px;
+  border: 1px solid #ffe0b2;
 }
-.drink-drive img { width: 40px; margin-right: 20px; }
+
+.drink-drive img { 
+  width: 60px; 
+  height: auto; 
+  margin-bottom: 15px; 
+  display: block; 
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+.drink-drive span {
+  display: block;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #5d4037;
+}
 
 footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 </style>
@@ -223,7 +238,7 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
     <p><strong>19:00</strong> – Вечеря и танци</p>
 
     <div class="drink-drive">
-      <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png" alt="Car"/>
+      <img src="https://img.icons8.com/ios-filled/100/8b5e3c/car.png" alt="Car Icon"/>
       <span>За вашето пълно спокойствие и добро настроение, сме подсигурили неограничен <strong>Drink & Drive</strong> пакет за вечерта. Насладете се на празника, а ние ще се погрижим вие и автомобилът ви да се приберете безопасно!</span>
     </div>
   </section>
