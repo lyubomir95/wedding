@@ -178,6 +178,10 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 </head>
 <body>
 
+<audio id="bg-music" loop preload="auto">
+  <source src="https://github.com/lyubomir95/wedding/raw/refs/heads/main/music.mp3" type="audio/mpeg">
+</audio>
+
 <div id="envelope-screen">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap" id="f"></div>
@@ -264,10 +268,6 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 <p>С обич: Виктория и Любомир</p>
 </footer>
 
-<audio id="bg-music" loop preload="auto">
-<source src="./music.mp3" type="audio/mpeg">
-</audio>
-
 </div>
 
 <script>
@@ -275,14 +275,16 @@ function openEnvelope(){
 
 let music = document.getElementById("bg-music");
 
+// Малка корекция за подсигуряване на старта
 music.volume = 0.6;
-
 let playPromise = music.play();
 
 if (playPromise !== undefined) {
-playPromise.catch(error => {
-console.log("Audio blocked:", error);
-});
+    playPromise.then(_ => {
+        console.log("Music started!");
+    }).catch(error => {
+        console.log("Audio blocked:", error);
+    });
 }
 
 document.getElementById("f").style.transform="rotateX(180deg)";
