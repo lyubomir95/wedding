@@ -10,35 +10,14 @@ body {
   margin: 0;
   font-family: 'Georgia', serif;
   font-size: 24px; 
-  background: #ffffff;
+  background-color: #ffffff;
+  /* Добавяне на фонови цветя чрез SVG */
+  background-image: url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill-opacity='0.4'%3E%3Cpath d='M30 20c0-10 15-10 15 0s-15 10-15 0z' fill='%23add8e6'/%3E%3Cpath d='M37 13c10 0 10 15 0 15s-10-15 0-15z' fill='%23add8e6'/%3E%3Ccircle cx='37' cy='20' r='3' fill='%23fdfaf1'/%3E%3Cpath d='M150 140c0-10 15-10 15 0s-15 10-15 0z' fill='%23f9edea'/%3E%3Cpath d='M157 133c10 0 10 15 0 15s-10-15 0-15z' fill='%23f9edea'/%3E%3Ccircle cx='157' cy='140' r='3' fill='%23eac9c3'/%3E%3Cpath d='M80 100c0-8 12-8 12 0s-12 8-12 0z' fill='%23eac9c3'/%3E%3Cpath d='M86 94c8 0 8 12 0 12s-8-12 0-12z' fill='%23eac9c3'/%3E%3Ccircle cx='86' cy='100' r='2' fill='%23fdfaf1'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
   color: #333;
   text-align: center;
   line-height: 1.6;
-  overflow-x: hidden;
 }
-
-/* --- ФЛОРАЛНИ ДЕКОРАЦИИ (ВГРАДЕНИ ДИРЕКТНО) --- */
-.flower-decor {
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.7;
-  display: none;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-/* Вградено изображение на нежни цветя (Base64) */
-.flower-img {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg transform='translate(20,20)'%3E%3Cpath d='M0 30 Q 15 0 30 30 Q 45 60 60 30' stroke='%238ba3bc' fill='none' stroke-width='1' opacity='0.5'/%3E%3Ccircle cx='30' cy='30' r='15' fill='%23eac9c3' opacity='0.6'/%3E%3Ccircle cx='45' cy='20' r='10' fill='%23fdfaf1' opacity='0.8'/%3E%3Cpath d='M30 30 L 50 10' stroke='%235d6d84' stroke-width='0.5'/%3E%3Cpath d='M30 30 L 10 10' stroke='%235d6d84' stroke-width='0.5'/%3E%3Cellipse cx='50' cy='10' rx='5' ry='10' fill='%23a3b18a' opacity='0.4' transform='rotate(45 50 10)'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-.top-left { top: -30px; left: -30px; }
-.top-right { top: -30px; right: -30px; transform: scaleX(-1); }
-.bottom-left { bottom: -30px; left: -30px; transform: scaleY(-1); }
-.bottom-right { bottom: -30px; right: -30px; transform: scale(-1); }
 
 /* --- ПОЩЕНСКИ ПЛИК --- */
 #envelope-screen {
@@ -48,8 +27,6 @@ body {
   justify-content: center;
   background: #fdfaf7;
   perspective: 1500px;
-  position: relative;
-  z-index: 100;
 }
 
 .envelope {
@@ -73,6 +50,7 @@ body {
   transform-origin: top;
   transition: transform 1s ease-in-out;
   z-index: 2;
+  border-radius: 4px 4px 0 0;
 }
 
 .wax-seal {
@@ -88,7 +66,19 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   z-index: 3;
+  border: 2px solid #b8860b;
+  transition: opacity 0.5s;
+}
+
+.envelope-text {
+  position: absolute;
+  bottom: 35px;
+  width: 100%;
+  color: #f1f1f1;
+  font-style: italic;
+  font-size: 20px;
 }
 
 /* --- ОСНОВЕН САЙТ --- */
@@ -108,23 +98,14 @@ header {
   justify-content: center;
   color: white;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 10;
 }
 
-section { 
-  padding: 80px 20px; 
-  max-width: 800px; 
-  margin: 40px auto; 
-  background: rgba(255, 255, 255, 0.9); 
-  border-radius: 20px;
-  position: relative;
-  z-index: 10;
-}
+header h1 { font-size: 60px; margin: 0; }
+header h2 { font-weight: normal; font-size: 30px; }
 
+section { padding: 80px 20px; max-width: 800px; margin: auto; }
 h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
 
-/* ДРЕСКОД ЦВЕТОВЕ */
 .dresscode-colors {
   display: flex;
   justify-content: center;
@@ -137,6 +118,7 @@ h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
   width: 65px;
   height: 65px;
   border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border: 2px solid #eee;
 }
 
@@ -155,29 +137,57 @@ h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
   text-decoration: none;
   border-radius: 5px;
   font-weight: bold;
+  font-size: 22px;
 }
 
-form input, form select, form button {
-  width: 100%; padding: 15px; margin: 10px 0; font-size: 22px; border-radius: 5px; border: 1px solid #ddd;
+form { 
+  background: rgba(253, 250, 247, 0.9); /* Лека прозрачност, за да се виждат цветята */
+  padding: 40px 20px; 
+  border-radius: 10px; 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
 }
 
-form button { background: #8b5e3c; color: white; cursor: pointer; font-weight: bold; }
+input, select, button { 
+  width: 100%; 
+  padding: 15px; 
+  margin: 12px 0; 
+  border-radius: 5px; 
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+  font-size: 22px; 
+  font-family: 'Georgia', serif;
+}
 
-footer { padding: 50px; font-size: 20px; color: #777; }
+button { 
+  background: #8b5e3c; 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: bold;
+}
+
+.drink-drive {
+  background: rgba(244, 236, 228, 0.9);
+  padding: 25px;
+  border-radius: 10px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  font-size: 21px; 
+}
+.drink-drive img { width: 40px; margin-right: 20px; }
+
+footer { padding: 50px; background: rgba(247, 247, 247, 0.9); font-size: 20px; color: #777; }
 </style>
 </head>
 <body>
-
-<div class="flower-decor flower-img top-left" id="fl1"></div>
-<div class="flower-decor flower-img top-right" id="fl2"></div>
-<div class="flower-decor flower-img bottom-left" id="fl3"></div>
-<div class="flower-decor flower-img bottom-right" id="fl4"></div>
 
 <div id="envelope-screen">
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap" id="f"></div>
     <div class="wax-seal" id="s"></div>
-    <div class="envelope-text" style="position: absolute; bottom: 35px; width: 100%; color: #f1f1f1; font-style: italic; font-size: 20px;">Отвори поканата</div>
+    <div class="envelope-text">Натиснете, за да отворите</div>
   </div>
 </div>
 
@@ -192,10 +202,12 @@ footer { padding: 50px; font-size: 20px; color: #777; }
     <h2>Кога и Къде?</h2>
     <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
     <p>Ресторант "Корията", гр. София</p>
-    <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
+    <a href="https://maps.google.com/?cid=8868795563343412192&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" class="map-link">
+        📍 ВИЖТЕ ЛОКАЦИЯТА
+    </a>
   </section>
 
-  <section>
+  <section style="background-color: rgba(253, 250, 247, 0.7);">
     <h2>Дрескод</h2>
     <p>Ще бъдем щастливи, ако подкрепите нашата цветова палитра:</p>
     <div class="dresscode-colors">
@@ -208,6 +220,18 @@ footer { padding: 50px; font-size: 20px; color: #777; }
   </section>
 
   <section>
+    <h2>Програма</h2>
+    <p><strong>17:30</strong> – Welcome Drink</p>
+    <p><strong>18:00</strong> – Ритуал</p>
+    <p><strong>19:00</strong> – Вечеря и танци</p>
+
+    <div class="drink-drive">
+      <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png" alt="Car"/>
+      <span>За вашето пълно спокойствие и добро настроение, сме подсигурили неограничен <strong>Drink & Drive</strong> пакет за вечерта. Насладете се на празника, а ние ще се погрижим вие и автомобилът ви да се приберете безопасно!</span>
+    </div>
+  </section>
+
+  <section style="background-color: rgba(253, 250, 247, 0.7);">
     <h2>Потвърждение</h2>
     <p>Моля да потвърдите вашето присъствие до 20.07.2026</p>
     <form action="https://formspree.io/f/lyubomir.kostov95@gmail.com" method="POST">
@@ -239,13 +263,6 @@ function openEnvelope(){
     setTimeout(() => {
       document.getElementById("envelope-screen").style.display = "none";
       document.getElementById("main-site").style.display = "block";
-      
-      // Показване на цветята
-      document.getElementById("fl1").style.display = "block";
-      document.getElementById("fl2").style.display = "block";
-      document.getElementById("fl3").style.display = "block";
-      document.getElementById("fl4").style.display = "block";
-      
       window.scrollTo(0, 0);
     }, 800);
   }, 1000);
