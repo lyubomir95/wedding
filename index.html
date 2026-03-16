@@ -14,6 +14,49 @@ body {
   color: #333;
   text-align: center;
   line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* --- ФЛОРАЛНИ ДЕКОРАЦИИ (НОВО) --- */
+.floral-bg {
+  position: relative;
+  background-color: #ffffff;
+}
+
+/* Добавяне на листа в ъглите на секциите */
+section {
+  position: relative;
+  padding: 80px 20px;
+  max-width: 800px;
+  margin: auto;
+  z-index: 1;
+}
+
+section::before, section::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15; /* Дискретни листа */
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Горно ляво листо (синьо-сиво) */
+section:nth-of-type(odd)::before {
+  top: 10px;
+  left: -50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%235d6d84' d='M10,90 Q30,10 90,10 Q50,50 10,90' /%3E%3Cpath fill='%238ba3bc' d='M20,80 Q40,30 80,30 Q60,60 20,80' /%3E%3C/svg%3E");
+  transform: rotate(-15deg);
+}
+
+/* Долно дясно цвете (пепел от рози) */
+section:nth-of-type(even)::after {
+  bottom: 10px;
+  right: -50px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle fill='%23eac9c3' cx='50' cy='50' r='20'/%3E%3Ccircle fill='%23f9edea' cx='30' cy='50' r='15'/%3E%3Ccircle fill='%23f9edea' cx='70' cy='50' r='15'/%3E%3Ccircle fill='%23f9edea' cx='50' cy='30' r='15'/%3E%3Ccircle fill='%23f9edea' cx='50' cy='70' r='15'/%3E%3C/svg%3E");
 }
 
 /* --- ПОЩЕНСКИ ПЛИК --- */
@@ -100,7 +143,6 @@ header {
 header h1 { font-size: 60px; margin: 0; }
 header h2 { font-weight: normal; font-size: 30px; }
 
-section { padding: 80px 20px; max-width: 800px; margin: auto; }
 h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
 
 .dresscode-colors {
@@ -188,7 +230,7 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
   </div>
 </div>
 
-<div id="main-site">
+<div id="main-site" class="floral-bg">
   <header>
     <h1>Виктория & Любомир</h1>
     <h2>22.08.2026</h2>
