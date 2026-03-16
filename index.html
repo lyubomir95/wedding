@@ -17,21 +17,21 @@ body {
   overflow-x: hidden;
 }
 
-/* --- ФЛОРАЛНИ ДЕКОРАЦИИ ПО СНИМКАТА --- */
-.flower-decor {
+/* --- ФЛОРАЛНА ДЕКОРАЦИЯ ПО СНИМКАТА --- */
+.floral-element {
   position: fixed;
-  width: 300px; /* Достатъчно големи за детайл */
+  width: 250px; /* Достатъчно големи, за да се виждат */
   height: auto;
-  z-index: 1; /* Под текста */
+  z-index: 5;
   pointer-events: none;
-  opacity: 0.7;
-  display: none; /* Появяват се след отваряне */
+  opacity: 0.8;
+  display: none; /* Ще се покажат след отваряне */
 }
 
-.top-left { top: -40px; left: -40px; }
-.top-right { top: -40px; right: -40px; transform: scaleX(-1); }
-.bottom-left { bottom: -40px; left: -40px; transform: scaleY(-1); }
-.bottom-right { bottom: -40px; right: -40px; transform: scale(-1); }
+.top-left { top: -50px; left: -50px; transform: rotate(0deg); }
+.top-right { top: -50px; right: -50px; transform: rotate(90deg); }
+.bottom-left { bottom: -50px; left: -50px; transform: rotate(-90deg); }
+.bottom-right { bottom: -50px; right: -50px; transform: rotate(180deg); }
 
 /* --- ПОЩЕНСКИ ПЛИК --- */
 #envelope-screen {
@@ -100,7 +100,6 @@ body {
 #main-site {
   display: none;
   animation: fadeIn 1.5s ease;
-  background: white;
 }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -114,27 +113,14 @@ header {
   justify-content: center;
   color: white;
   text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-  position: relative;
-  z-index: 10;
 }
 
 header h1 { font-size: 60px; margin: 0; }
 header h2 { font-weight: normal; font-size: 30px; }
 
-section { 
-  padding: 80px 20px; 
-  max-width: 800px; 
-  margin: auto; 
-  position: relative; 
-  z-index: 10;
-  background: rgba(255, 255, 255, 0.85); /* Прави текста четлив над цветята */
-  border-radius: 20px;
-  margin-top: 20px;
-}
-
+section { padding: 80px 20px; max-width: 800px; margin: auto; position: relative; z-index: 10; }
 h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
 
-/* ДРЕСКОД ЦВЕТОВЕ */
 .dresscode-colors {
   display: flex;
   justify-content: center;
@@ -184,6 +170,7 @@ input, select, button {
   border: 1px solid #ddd;
   box-sizing: border-box;
   font-size: 22px; 
+  font-family: 'Georgia', serif;
 }
 
 button { 
@@ -194,15 +181,35 @@ button {
   font-weight: bold;
 }
 
-footer { padding: 50px; background: transparent; font-size: 20px; color: #777; position: relative; z-index: 10; }
+footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 </style>
 </head>
 <body>
 
-<img src="https://www.transparentpng.com/download/floral/wedding-invitation-flower-png-floral-frame-free-download-23.png" class="flower-decor top-left">
-<img src="https://www.transparentpng.com/download/floral/wedding-invitation-flower-png-floral-frame-free-download-23.png" class="flower-decor top-right">
-<img src="https://www.transparentpng.com/download/floral/wedding-invitation-flower-png-floral-frame-free-download-23.png" class="flower-decor bottom-left">
-<img src="https://www.transparentpng.com/download/floral/wedding-invitation-flower-png-floral-frame-free-download-23.png" class="flower-decor bottom-right">
+<div class="floral-element top-left">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="50" fill="#eac9c3" opacity="0.6"/> <circle cx="140" cy="80" r="40" fill="#8ba3bc" opacity="0.6"/>  <path d="M40,150 Q10,100 60,50" stroke="#5d6d84" stroke-width="4" fill="none" opacity="0.5"/> </svg>
+</div>
+
+<div class="floral-element top-right">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="50" fill="#fdfaf1" opacity="0.7"/> <circle cx="60" cy="120" r="45" fill="#eac9c3" opacity="0.6"/>
+  </svg>
+</div>
+
+<div class="floral-element bottom-left">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="60" fill="#8ba3bc" opacity="0.5"/>
+    <path d="M150,50 Q180,120 100,180" stroke="#5d6d84" stroke-width="3" fill="none" opacity="0.4"/>
+  </svg>
+</div>
+
+<div class="floral-element bottom-right">
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="50" fill="#eac9c3" opacity="0.6"/>
+    <circle cx="70" cy="70" r="40" fill="#f9edea" opacity="0.7"/>
+  </svg>
+</div>
 
 <div id="envelope-screen">
   <div class="envelope" onclick="openEnvelope()">
@@ -223,12 +230,12 @@ footer { padding: 50px; background: transparent; font-size: 20px; color: #777; p
     <h2>Кога и Къде?</h2>
     <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
     <p>Ресторант "Корията", гр. София</p>
-    <a href="http://googleusercontent.com/maps.google.com/9" target="_blank" class="map-link">
+    <a href="https://maps.google.com/?cid=8868795563343412192&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" class="map-link">
         📍 ВИЖТЕ ЛОКАЦИЯТА
     </a>
   </section>
 
-  <section style="background-color: rgba(253, 250, 247, 0.9);">
+  <section style="background-color: #fdfaf7;">
     <h2>Дрескод</h2>
     <p>Ще бъдем щастливи, ако подкрепите нашата цветова палитра:</p>
     <div class="dresscode-colors">
@@ -241,13 +248,6 @@ footer { padding: 50px; background: transparent; font-size: 20px; color: #777; p
   </section>
 
   <section>
-    <h2>Програма</h2>
-    <p><strong>17:30</strong> – Welcome Drink</p>
-    <p><strong>18:00</strong> – Ритуал</p>
-    <p><strong>19:00</strong> – Вечеря и танци</p>
-  </section>
-
-  <section style="background-color: rgba(253, 250, 247, 0.9);">
     <h2>Потвърждение</h2>
     <p>Моля да потвърдите вашето присъствие до 20.07.2026</p>
     <form action="https://formspree.io/f/lyubomir.kostov95@gmail.com" method="POST">
@@ -280,9 +280,9 @@ function openEnvelope(){
       document.getElementById("envelope-screen").style.display = "none";
       document.getElementById("main-site").style.display = "block";
       
-      // Показване на цветята
-      const flowers = document.querySelectorAll('.flower-decor');
-      flowers.forEach(img => img.style.display = 'block');
+      // Показване на вградените цветя
+      const florals = document.querySelectorAll('.floral-element');
+      florals.forEach(f => f.style.display = 'block');
       
       window.scrollTo(0, 0);
     }, 800);
@@ -292,3 +292,4 @@ function openEnvelope(){
 
 </body>
 </html>
+
