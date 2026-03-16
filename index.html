@@ -264,7 +264,7 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 <p>С обич: Виктория и Любомир</p>
 </footer>
 
-<audio id="bg-music" loop>
+<audio id="bg-music" loop preload="auto">
 <source src="music.mp3" type="audio/mpeg">
 </audio>
 
@@ -273,7 +273,9 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 <script>
 function openEnvelope(){
 
-document.getElementById("bg-music").play();
+const music = document.getElementById("bg-music");
+music.currentTime = 0;
+music.play().catch(()=>{});
 
 document.getElementById("f").style.transform="rotateX(180deg)";
 document.getElementById("s").style.opacity="0";
