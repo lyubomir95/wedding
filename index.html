@@ -2,198 +2,142 @@
 <html lang="bg">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Сватбата на Виктория и Любомир</title>
 <style>
-  body {
+  /* ПЪЛНО РЕСТАРТИРАНЕ ЗА МОБИЛНИ */
+  html, body {
     margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden; /* Забранява мърдане наляво-надясно */
     font-family: 'Georgia', serif;
-    font-size: 24px; 
     background: #ffffff;
     color: #333;
     text-align: center;
-    line-height: 1.6;
+    -webkit-overflow-scrolling: touch; /* Плавно скролване за iPhone */
   }
 
-  /* Плик */
+  /* ЕКРАН С ПЛИК */
   #envelope-screen {
     height: 100vh;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fdfaf7;
-    perspective: 1500px;
-    position: fixed; /* Подсигурява екрана */
-    width: 100%;
+    position: fixed;
     top: 0;
-    z-index: 1000;
+    left: 0;
+    z-index: 2000;
   }
 
   .envelope {
-    width: 320px; 
-    height: 220px;
-    background: #a9a39a; 
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-    border-radius: 4px;
-  }
-
-  @media (min-width: 600px) {
-    .envelope { width: 400px; height: 260px; }
+    width: 280px; height: 180px;
+    background: #a9a39a; position: relative; cursor: pointer; border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   }
 
   .flap {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #b6afa6;
-    clip-path: polygon(0 0, 100% 0, 50% 60%);
-    transform-origin: top;
-    transition: transform 1s ease-in-out;
-    z-index: 2;
-    border-radius: 4px 4px 0 0;
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background: #b6afa6; clip-path: polygon(0 0, 100% 0, 50% 60%);
+    transform-origin: top; transition: transform 1s; z-index: 2;
   }
 
   .wax-seal {
-    position: absolute;
-    top: 52%; 
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 60px;
-    height: 60px;
-    background: #d4af37;
-    background-image: url('https://img.icons8.com/ios-filled/100/ffffff/tree-planting.png'); 
-    background-size: 70%;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    z-index: 3;
-    border: 2px solid #b8860b;
+    position: absolute; top: 52%; left: 50%; transform: translate(-50%, -50%);
+    width: 50px; height: 50px; background: #d4af37; border-radius: 50%; z-index: 3;
+    background-image: url('https://img.icons8.com/ios-filled/100/ffffff/tree-planting.png');
+    background-size: 60%; background-position: center; background-repeat: no-repeat;
   }
 
-  .envelope-text {
-    position: absolute;
-    bottom: 30px;
-    width: 100%;
-    color: #f1f1f1;
-    font-style: italic;
-    font-size: 18px;
-  }
-
+  /* ГЛАВЕН САЙТ - СКРИТ В НАЧАЛОТО */
   #main-site {
     display: none;
-    animation: fadeIn 1.5s ease;
+    width: 100%;
+    position: relative;
   }
 
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-  /* HEADER С ОПРАВЕНИЯ ТЕКСТ */
+  /* HEADER СЪС СНИМКАТА */
   header {
-    background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 url('my-photo.jpg') center/cover no-repeat;
-    min-height: 100vh;
+    height: 100vh; /* Заема точно един екран */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: white;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
     padding: 20px;
     box-sizing: border-box;
   }
 
-  header h1 { font-size: 55px; margin: 0; }
-  header h2 { font-weight: normal; font-size: 30px; margin: 10px 0 20px 0; }
-  header p.invite-msg { max-width: 650px; margin: 0; font-size: 24px; }
+  header h1 { font-size: 40px; margin: 0; }
+  header h2 { font-size: 26px; margin: 10px 0; font-weight: normal; }
+  .invite-msg { font-size: 20px; max-width: 90%; margin: 20px 0; line-height: 1.4; }
 
-  /* КОРЕКЦИЯТА: Без абсолютни позиции! */
+  /* КОРЕКЦИЯТА ЗА КУМОВЕТЕ - СТОИ ПОД ТЕКСТА, НЕ СЕ СЛИВА */
   .kumuvani {
-    font-size: 24px;
-    color: #ffffff;
-    margin-top: 45px; /* Разстояние, за да не се застъпват */
+    font-size: 22px;
+    margin-top: 30px;
     font-style: italic;
+    font-weight: bold;
     display: block;
-    font-weight: normal;
   }
 
-  @media (max-width: 768px) {
-    header h1 { font-size: 38px; }
-    header h2 { font-size: 26px; }
-    header p.invite-msg { font-size: 19px; }
-    .kumuvani { font-size: 20px; margin-top: 30px; }
+  /* ВСИЧКИ СЕКЦИИ НАДОЛУ */
+  section {
+    padding: 60px 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: block; /* Гарантира, че се виждат */
+    clear: both;
   }
 
-  /* СЕКЦИИ */
-  section { padding: 80px 20px; max-width: 800px; margin: auto; }
-  h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
+  .section-title { color: #8b5e3c; font-size: 32px; margin-bottom: 20px; }
 
+  /* ДРЕСКОД ЦВЕТОВЕ */
   .dresscode-colors {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 25px;
-    flex-wrap: wrap;
+    display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 20px;
   }
-
-  .color-circle {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    border: 2px solid #eee;
-  }
-
-  .c1 { background: #5d6d84; } .c2 { background: #8ba3bc; } 
-  .c3 { background: #eac9c3; } .c4 { background: #f9edea; } .c5 { background: #fdfaf1; } 
+  .color-circle { width: 50px; height: 50px; border-radius: 50%; border: 1px solid #ddd; }
+  .c1 { background: #5d6d84; } .c2 { background: #8ba3bc; } .c3 { background: #eac9c3; } .c4 { background: #f9edea; } .c5 { background: #fdfaf1; }
 
   .map-link {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 15px 35px;
-    background: #a9a39a;
-    color: white !important;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 22px;
+    display: inline-block; padding: 15px 30px; background: #a9a39a; color: white !important;
+    text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px;
   }
 
   .drink-drive {
-    background: #f4ece4;
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 40px;
-    display: flex;
-    align-items: center;
-    text-align: left;
-    font-size: 21px; 
+    background: #f4ece4; padding: 20px; border-radius: 10px; margin-top: 30px;
+    display: flex; align-items: center; text-align: left; font-size: 18px;
   }
-  .drink-drive img { width: 40px; margin-right: 20px; }
+  .drink-drive img { width: 35px; margin-right: 15px; }
 
-  form { 
-    background: #fdfaf7; 
-    padding: 40px 20px; 
-    border-radius: 10px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
-  }
-
+  /* ФОРМА */
+  form { background: #fdfaf7; padding: 30px 15px; border-radius: 10px; margin-top: 20px; }
   input, select, button { 
-    width: 100%; padding: 15px; margin: 12px 0; border-radius: 5px; border: 1px solid #ddd;
-    box-sizing: border-box; font-size: 22px; font-family: 'Georgia', serif;
+    width: 100%; padding: 12px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd;
+    box-sizing: border-box; font-size: 18px; font-family: 'Georgia', serif;
   }
+  button { background: #8b5e3c; color: white; border: none; font-weight: bold; cursor: pointer; }
 
-  button { background: #8b5e3c; color: white; border: none; cursor: pointer; font-weight: bold; }
+  footer { padding: 40px; background: #f7f7f7; font-size: 16px; }
 
-  footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
+  /* МОБИЛНИ КОРЕКЦИИ */
+  @media (max-width: 480px) {
+    header h1 { font-size: 32px; }
+    header h2 { font-size: 22px; }
+    .invite-msg { font-size: 17px; }
+    section { padding: 40px 15px; }
+  }
 </style>
 </head>
 <body>
 
-<audio id="bg-music" loop preload="auto">
+<audio id="bg-music" loop>
   <source src="https://github.com/lyubomir95/wedding/raw/refs/heads/main/music.mp3" type="audio/mpeg">
 </audio>
 
@@ -201,96 +145,83 @@
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap" id="f"></div>
     <div class="wax-seal" id="s"></div>
-    <div class="envelope-text">Натиснете, за да отворите</div>
   </div>
 </div>
 
 <div id="main-site">
-<header>
-  <h1>Виктория & Любомир</h1>
-  <h2>22.08.2026</h2>
-  <p class="invite-msg">С огромна радост Ви каним да споделите най-щастливия ден в живота ни, нашата Сватба!</p>
-  <p class="kumuvani">Кумуват: Ивона & Антонио</p> 
-</header>
+  <header>
+    <h1>Виктория & Любомир</h1>
+    <h2>22.08.2026</h2>
+    <p class="invite-msg">С огромна радост Ви каним да споделите най-щастливия ден в живота ни – нашата сватба!</p>
+    <p class="kumuvani">Кумуват: Ивона & Антонио</p> 
+  </header>
 
-<section>
-  <h2>Кога и Къде?</h2>
-  <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
-  <p>Ресторант "Корията", гр. София</p>
-  <a href="https://www.google.com/maps" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
-</section>
+  <section>
+    <h2 class="section-title">Кога и Къде?</h2>
+    <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
+    <p>Ресторант "Корията", гр. София</p>
+    <a href="https://www.google.com/maps" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
+  </section>
 
-<section style="background-color:#fdfaf7;">
-  <h2>Дрескод</h2>
-  <p>Ще бъдем щастливи, ако подкрепите нашата цветова палитра:</p>
-  <div class="dresscode-colors">
-    <div class="color-circle c1"></div>
-    <div class="color-circle c2"></div>
-    <div class="color-circle c3"></div>
-    <div class="color-circle c4"></div>
-    <div class="color-circle c5"></div>
-  </div>
-</section>
+  <section style="background-color:#fdfaf7;">
+    <h2 class="section-title">Дрескод</h2>
+    <p>Ще бъдем щастливи, ако подкрепите нашата цветова палитра:</p>
+    <div class="dresscode-colors">
+      <div class="color-circle c1"></div>
+      <div class="color-circle c2"></div>
+      <div class="color-circle c3"></div>
+      <div class="color-circle c4"></div>
+      <div class="color-circle c5"></div>
+    </div>
+  </section>
 
-<section>
-  <h2>Програма</h2>
-  <p><strong>17:30</strong> – Welcome Drink</p>
-  <p><strong>18:00</strong> – Ритуал</p>
-  <p><strong>19:00</strong> – Вечеря и танци</p>
+  <section>
+    <h2 class="section-title">Програма</h2>
+    <p><strong>17:30</strong> – Welcome Drink</p>
+    <p><strong>18:00</strong> – Ритуал</p>
+    <p><strong>19:00</strong> – Вечеря и танци</p>
+    <div class="drink-drive">
+      <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png">
+      <span>Осигурили сме <strong>Drink & Drive</strong> пакет за вашето спокойствие!</span>
+    </div>
+  </section>
 
-  <div class="drink-drive">
-    <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png">
-    <span>
-      За вашето пълно спокойствие и добро настроение, сме подсигурили неограничен 
-      <strong>Drink & Drive</strong> пакет за вечерта.
-    </span>
-  </div>
-</section>
+  <section style="background-color:#fdfaf7;">
+    <h2 class="section-title">Потвърждение</h2>
+    <form action="https://formspree.io/f/xjgaalzo" method="POST">
+      <input type="text" name="name" placeholder="Вашето име" required>
+      <select name="status" required>
+        <option value="" disabled selected>Ще присъствате ли?</option>
+        <option value="Да">Да, ще присъствам</option>
+        <option value="Не">За съжаление, не</option>
+      </select>
+      <input type="number" name="guests" placeholder="Брой гости" min="1">
+      <button type="submit">ИЗПРАТИ</button>
+    </form>
+  </section>
 
-<section style="background-color:#fdfaf7;">
-  <h2>Потвърждение</h2>
-  <p>Моля да потвърдите вашето присъствие до 20.07.2026</p>
-  <form action="https://formspree.io/f/xjgaalzo" method="POST">
-    <input type="hidden" name="_next" value="https://victoria-lyubomir.github.io/wedding/">
-    <input type="text" name="name" placeholder="Вашето име" required>
-    <select name="status" required>
-      <option value="" disabled selected>Ще присъствате ли?</option>
-      <option value="Да">Да, ще присъствам</option>
-      <option value="Не">За съжаление, не</option>
-    </select>
-    <input type="number" name="guests" placeholder="Брой гости" min="1">
-    <select name="menu" required>
-      <option value="" disabled selected>Изберете меню</option>
-      <option value="Месо">Месо</option>
-      <option value="Вегетарианско">Вегетарианско</option>
-    </select>
-    <button type="submit">ИЗПРАТИ</button>
-  </form>
-</section>
-
-<footer>
-  <p>С обич: Виктория и Любомир</p>
-</footer>
+  <footer>
+    <p>С обич: Виктория и Любомир</p>
+  </footer>
 </div>
 
 <script>
 function openEnvelope(){
   let music = document.getElementById("bg-music");
-  music.volume = 0.6;
-  music.play().catch(e => console.log("Music blocked"));
+  music.play().catch(() => {});
 
-  document.getElementById("f").style.transform="rotateX(180deg)";
-  document.getElementById("s").style.opacity="0";
+  document.getElementById("f").style.transform = "rotateX(180deg)";
+  document.getElementById("s").style.opacity = "0";
 
-  setTimeout(()=>{
-    document.getElementById("envelope-screen").style.opacity="0";
-    document.getElementById("envelope-screen").style.transition="opacity 0.8s ease";
-    setTimeout(()=>{
-      document.getElementById("envelope-screen").style.display="none";
-      document.getElementById("main-site").style.display="block";
-      window.scrollTo(0,0);
-    },800);
-  },1000);
+  setTimeout(() => {
+    document.getElementById("envelope-screen").style.display = "none";
+    document.getElementById("main-site").style.display = "block";
+    
+    // ТОВА Е КЛЮЧЪТ: Силно активиране на скрола
+    document.body.style.overflow = "visible";
+    document.documentElement.style.overflow = "visible";
+    window.scrollTo(0, 0);
+  }, 1000);
 }
 </script>
 </body>
