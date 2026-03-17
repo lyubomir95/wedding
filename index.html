@@ -5,17 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Сватбата на Виктория и Любомир</title>
 <style>
-/* ОБЩИ СТИЛОВЕ */
 body {
   margin: 0;
   font-family: 'Georgia', serif;
+  font-size: 24px; 
   background: #ffffff;
   color: #333;
   text-align: center;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* ЕКРАН С ПЛИК */
+/* Екран с плика */
 #envelope-screen {
   height: 100vh;
   display: flex;
@@ -27,11 +27,10 @@ body {
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: opacity 0.8s ease;
 }
 
 .envelope {
-  width: 320px;
+  width: 320px; 
   height: 220px;
   background: #a9a39a; 
   position: relative;
@@ -51,6 +50,7 @@ body {
   transform-origin: top;
   transition: transform 1s ease-in-out;
   z-index: 2;
+  border-radius: 4px 4px 0 0;
 }
 
 .wax-seal {
@@ -66,9 +66,21 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
   z-index: 3;
+  border: 2px solid #b8860b;
 }
 
+.envelope-text {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  color: #f1f1f1;
+  font-style: italic;
+  font-size: 18px;
+}
+
+/* Основен сайт */
 #main-site {
   display: none;
   animation: fadeIn 1.5s ease;
@@ -76,50 +88,44 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-/* HEADER СЪС СНИМКАТА - ФИКСИРАН ЗА МОБИЛНИ */
+/* HEADER С КОРЕКЦИЯТА ЗА ТЕКСТА */
 header {
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), 
               url('my-photo.jpg') center/cover no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* Центрира групата текстове */
   align-items: center;
-  justify-content: flex-start;
   color: white;
-  text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
-  padding: 12vh 20px 40px 20px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.6);
+  padding: 40px 20px;
   box-sizing: border-box;
 }
 
-header h1 { font-size: 48px; margin: 0; }
-header h2 { font-weight: normal; font-size: 28px; margin: 15px 0 40px 0; color: #f9edea; }
+header h1 { font-size: 55px; margin: 0; }
+header h2 { font-weight: normal; font-size: 30px; margin: 10px 0 20px 0; }
+header p.invite-msg { max-width: 600px; margin: 0; font-size: 24px; }
 
-.invite-text {
-  font-size: 22px;
-  line-height: 1.4;
-  max-width: 600px;
-  margin: 0;
-}
-
+/* Текстът "Кумуват" вече е в потока на текста с margin */
 .kumuvani {
   font-size: 24px;
-  margin-top: 50px; /* Фиксирано разстояние под поканата */
+  color: white;
+  margin-top: 40px; /* Твърдо разстояние, за да не се застъпват */
   font-style: italic;
-  font-weight: bold;
   display: block;
-  position: static !important;
 }
 
 @media (max-width: 768px) {
-  header h1 { font-size: 36px; }
-  header h2 { font-size: 24px; margin-bottom: 30px; }
-  .invite-text { font-size: 19px; }
-  .kumuvani { font-size: 21px; margin-top: 35px; }
+  header h1 { font-size: 40px; }
+  header h2 { font-size: 26px; }
+  header p.invite-msg { font-size: 20px; }
+  .kumuvani { font-size: 21px; margin-top: 30px; }
 }
 
 /* СЕКЦИИ */
 section { padding: 80px 20px; max-width: 800px; margin: auto; }
-h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
+h2.section-title { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
 
 /* ДРЕСКОД */
 .dresscode-colors {
@@ -136,10 +142,12 @@ h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   border: 2px solid #eee;
 }
-.c1 { background: #5d6d84; } .c2 { background: #8ba3bc; } 
-.c3 { background: #eac9c3; } .c4 { background: #f9edea; } .c5 { background: #fdfaf1; } 
+.c1 { background: #5d6d84; } 
+.c2 { background: #8ba3bc; } 
+.c3 { background: #eac9c3; } 
+.c4 { background: #f9edea; } 
+.c5 { background: #fdfaf1; } 
 
-/* КАРТА */
 .map-link {
   display: inline-block;
   margin-top: 15px;
@@ -161,7 +169,7 @@ h2 { color: #8b5e3c; font-size: 40px; margin-bottom: 30px; }
   display: flex;
   align-items: center;
   text-align: left;
-  font-size: 20px; 
+  font-size: 21px; 
 }
 .drink-drive img { width: 40px; margin-right: 20px; }
 
@@ -173,14 +181,8 @@ form {
   box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
 }
 input, select, button { 
-  width: 100%; 
-  padding: 15px; 
-  margin: 12px 0; 
-  border-radius: 5px; 
-  border: 1px solid #ddd;
-  box-sizing: border-box;
-  font-size: 20px; 
-  font-family: 'Georgia', serif;
+  width: 100%; padding: 15px; margin: 12px 0; border-radius: 5px; border: 1px solid #ddd;
+  box-sizing: border-box; font-size: 22px; font-family: 'Georgia', serif;
 }
 button { background: #8b5e3c; color: white; border: none; cursor: pointer; font-weight: bold; }
 
@@ -197,6 +199,7 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
   <div class="envelope" onclick="openEnvelope()">
     <div class="flap" id="f"></div>
     <div class="wax-seal" id="s"></div>
+    <div class="envelope-text">Натиснете, за да отворите</div>
   </div>
 </div>
 
@@ -204,19 +207,19 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 <header>
   <h1>Виктория & Любомир</h1>
   <h2>22.08.2026</h2>
-  <p class="invite-text">С огромна радост Ви каним да споделите най-щастливия ден в живота ни, нашата сватба!</p>
+  <p class="invite-msg">С огромна радост Ви каним да споделите най-щастливия ден в живота ни, нашата сватба!</p>
   <p class="kumuvani">Кумуват: Ивона & Антонио</p> 
 </header>
 
 <section>
-  <h2>Кога и Къде?</h2>
+  <h2 class="section-title">Кога и Къде?</h2>
   <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
   <p>Ресторант "Корията", гр. София</p>
-  <a href="https://maps.app.goo.gl/YourLink" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
+  <a href="https://maps.google.com/?cid=8868795563343412192&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNl" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
 </section>
 
 <section style="background-color:#fdfaf7;">
-  <h2>Дрескод</h2>
+  <h2 class="section-title">Дрескод</h2>
   <p>Ще бъдем щастливи, ако подкрепите нашата цветова палитра:</p>
   <div class="dresscode-colors">
     <div class="color-circle c1"></div>
@@ -228,19 +231,23 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 </section>
 
 <section>
-  <h2>Програма</h2>
+  <h2 class="section-title">Програма</h2>
   <p><strong>17:30</strong> – Welcome Drink</p>
   <p><strong>18:00</strong> – Ритуал</p>
   <p><strong>19:00</strong> – Вечеря и танци</p>
+
   <div class="drink-drive">
     <img src="https://img.icons8.com/ios-filled/50/8b5e3c/car.png">
-    <span>Осигурили сме неограничен <strong>Drink & Drive</strong> пакет за вашето спокойствие!</span>
+    <span>
+      За вашето пълно спокойствие сме подсигурили неограничен 
+      <strong>Drink & Drive</strong> пакет за вечерта.
+    </span>
   </div>
 </section>
 
 <section style="background-color:#fdfaf7;">
-  <h2>Потвърждение</h2>
-  <p>Моля да потвърдите присъствие до 20.07.2026</p>
+  <h2 class="section-title">Потвърждение</h2>
+  <p>Моля да потвърдите вашето присъствие до 20.07.2026</p>
   <form action="https://formspree.io/f/xjgaalzo" method="POST">
     <input type="text" name="name" placeholder="Вашето име" required>
     <select name="status" required>
@@ -261,24 +268,25 @@ footer { padding: 50px; background: #f7f7f7; font-size: 20px; color: #777; }
 <footer>
   <p>С обич: Виктория и Любомир</p>
 </footer>
+
 </div>
 
 <script>
 function openEnvelope(){
   let music = document.getElementById("bg-music");
-  music.play().catch(e => console.log("Music error:", e));
-  
+  music.play().catch(e => console.log("Music blocked"));
+
   document.getElementById("f").style.transform="rotateX(180deg)";
   document.getElementById("s").style.opacity="0";
-  
+
   setTimeout(()=>{
     document.getElementById("envelope-screen").style.opacity="0";
     setTimeout(()=>{
       document.getElementById("envelope-screen").style.display="none";
       document.getElementById("main-site").style.display="block";
       window.scrollTo(0,0);
-    }, 800);
-  }, 1000);
+    },800);
+  },1000);
 }
 </script>
 
