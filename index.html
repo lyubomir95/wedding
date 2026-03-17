@@ -84,7 +84,7 @@
     font-weight: bold; display: block;
   }
 
-  section { padding: 80px 20px; max-width: 800px; margin: 0 auto; overflow: visible; }
+  section { padding: 80px 20px; max-width: 800px; margin: 0 auto; }
   .section-title { color: #8b5e3c; font-size: 36px; margin-bottom: 30px; }
 
   /* ДРЕСКОД */
@@ -97,7 +97,7 @@
     text-decoration: none; border-radius: 5px; font-weight: bold; font-size: 20px; margin-top: 15px;
   }
 
-  /* DRINK & DRIVE - ФИКСИРАН ЗА ЦЯЛ ТЕКСТ */
+  /* DRINK & DRIVE */
   .drink-drive {
     background: #f4ece4; padding: 30px 20px; border-radius: 12px; margin: 40px auto;
     display: block; text-align: center; font-size: 19px; line-height: 1.6;
@@ -111,7 +111,7 @@
     .drink-drive img { margin-bottom: 0; margin-right: 20px; }
   }
 
-  /* ФОРМА ЗА ПОТВЪРЖДЕНИЕ */
+  /* ФОРМА */
   form { background: #fdfaf7; padding: 40px 20px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); margin-top: 20px; }
   input, select, button { 
     width: 100%; padding: 15px; margin: 10px 0; border-radius: 5px; border: 1px solid #ddd;
@@ -127,7 +127,6 @@
     .invite-msg { font-size: 19px; }
     .kumuvani { font-size: 21px; margin-top: 30px; }
     .section-title { font-size: 30px; }
-    .drink-drive { font-size: 17px; }
   }
 </style>
 </head>
@@ -154,7 +153,7 @@
     <h2 class="section-title">Кога и Къде?</h2>
     <p>Очакваме ви на <strong>22.08.2026 г.</strong> в 17:30 ч.</p>
     <p>Ресторант "Корията", гр. София</p>
-    <a href="http://googleusercontent.com/maps.google.com/6" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
+    <a href="https://www.google.com/maps/search/?api=1&query=Ресторант+Корията+София" target="_blank" class="map-link">📍 ВИЖТЕ ЛОКАЦИЯТА</a>
   </section>
 
   <section style="background-color:#fdfaf7;">
@@ -189,17 +188,21 @@
     <form action="https://formspree.io/f/xjgaalzo" method="POST">
       <input type="hidden" name="_next" value="https://victoria-lyubomir.github.io/wedding/">
       <input type="text" name="name" placeholder="Вашето име" required>
+      
       <select name="status" required>
         <option value="" disabled selected>Ще присъствате ли?</option>
         <option value="Да">Да, ще присъствам</option>
         <option value="Не">За съжаление, не</option>
       </select>
+
       <input type="number" name="guests" placeholder="Брой гости" min="1">
+
       <select name="menu" required>
         <option value="" disabled selected>Изберете меню</option>
         <option value="Месо">Месо</option>
         <option value="Вегетарианско">Вегетарианско</option>
       </select>
+
       <button type="submit">ИЗПРАТИ</button>
     </form>
   </section>
