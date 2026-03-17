@@ -90,26 +90,35 @@
     text-decoration: none; border-radius: 5px; font-weight: bold; margin-top: 20px; font-size: 20px;
   }
 
-  /* КОРИГИРАНА DRINK & DRIVE СЕКЦИЯ */
+  /* ФИКСИРАНА DRINK & DRIVE СЕКЦИЯ - ГАРАНТИРАНО ПОКАЗВАНЕ НА ЦЕЛИЯ ТЕКСТ */
   .drink-drive {
     background: #f4ece4; 
-    padding: 25px; 
+    padding: 30px 20px; /* Повече вътрешно пространство */
     border-radius: 10px; 
-    margin-top: 35px;
+    margin: 40px auto;
     display: flex; 
-    flex-direction: column; /* Иконата над текста на тесен екран за повече място */
+    flex-direction: column; /* Икона над текста на телефон */
     align-items: center; 
+    justify-content: center;
     text-align: center; 
     font-size: 18px; 
-    line-height: 1.5;
+    line-height: 1.6; /* По-добра четливост */
+    width: 100%;
+    box-sizing: border-box;
+    min-height: min-content; /* Позволява на кутията да расте */
+  }
+
+  .drink-drive span {
+    display: block;
+    width: 100%;
   }
 
   @media (min-width: 600px) {
-    .drink-drive { flex-direction: row; text-align: left; }
+    .drink-drive { flex-direction: row; text-align: left; padding: 25px; }
     .drink-drive img { margin-bottom: 0; margin-right: 20px; }
   }
 
-  .drink-drive img { width: 45px; margin-bottom: 15px; }
+  .drink-drive img { width: 45px; height: auto; margin-bottom: 15px; }
 
   form { background: #fdfaf7; padding: 30px 15px; border-radius: 10px; margin-top: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
   input, select, button { width: 100%; padding: 12px; margin: 8px 0; border-radius: 5px; border: 1px solid #ddd; box-sizing: border-box; font-size: 18px; font-family: 'Georgia', serif; }
