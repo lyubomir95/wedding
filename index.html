@@ -100,12 +100,13 @@ header h2 { font-weight: normal; font-size: 30px; }
 
 .kumuvani {
   font-size: 24px;
-  color: white; 
-  padding: 10px;
+  color: white; /* само бял текст */
   margin-top: 30px; /* Увеличаваме разстоянието */
-  opacity: 1; /* Поставяме 1, за да е винаги видим */
+  opacity: 1;
   position: absolute;
-  bottom: 0; /* Позиционираме текста в долната част */
+  bottom: 0%; /* Позиционираме текста на самото дъно */
+  left: 50%;
+  transform: translateX(-50%); /* Центрираме текста */
 }
 
 section { padding: 80px 20px; max-width: 800px; margin: auto; }
